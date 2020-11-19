@@ -1,5 +1,6 @@
 library(shiny)
 library(shinydashboard)
+library(ggplot2)
 
 read.csv('provider.dataset.csv')
 read.csv('payer.dataset.csv')
@@ -21,10 +22,11 @@ dashboardPage(
               column(4,
                      selectInput('payer.input',
                                  label = 'select the payer',
-                                 choices =  payer.dataset$name),
-                     valueBoxOutput('payer.info')
-                    ),                   
-              column(12,tableOutput('provider.hist'))
+                                 choices =  payer.dataset$name)
+                    ),
+              column(8,
+                     plotOutput('provider.plot')),
+              column(8,tableOutput('provider.table'))
             )
             ),
     #providers tab content
