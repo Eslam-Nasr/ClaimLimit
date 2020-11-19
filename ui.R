@@ -19,14 +19,17 @@ dashboardPage(
     #dashboard tab content
     tabItem(tabName = 'dashboard',
             fluidRow(
+              #select the payer
               column(4,
                      selectInput('payer.input',
                                  label = 'select the payer',
                                  choices =  payer.dataset$name)
                     ),
+              #provider claim rate plot with a vertical line of payer claim cost
               column(8,
                      plotOutput('provider.plot')),
-              column(8,tableOutput('provider.table'))
+              #under limit providers table
+              column(8,offset = 4 ,tableOutput('provider.table'))
             )
             ),
     #providers tab content
